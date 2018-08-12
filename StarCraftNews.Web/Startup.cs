@@ -2,13 +2,17 @@
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using StarCraftNews.Data;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Http;
+    using StarCraftNews.Web.Infrastructure.Extensions;
+    using StarCraftNews.Data.Models;
+    using AutoMapper;
+    using StarCraftNews.Web.Services;
 
     public class Startup
     {
@@ -30,37 +34,66 @@
             });
 
             services.AddDbContext<StarCraftNewsDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<StarCraftNewsDbContext>();
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+            })
+               .AddEntityFrameworkStores<StarCraftNewsDbContext>()
+               .AddDefaultTokenProviders();
+
+            services.AddAutoMapper();
+
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddDomainServices();
+
+            services.AddRouting(routing => routing.LowercaseUrls = true);
+
+            //services.AddDefaultIdentity<IdentityUser>()
+            //   .AddEntityFrameworkStores<StarCraftNewsDbContext>();
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDatabaseMigration();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+                app.UseExceptionHandler("/home/error");
+                //app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             app.UseCookiePolicy();
 
             app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

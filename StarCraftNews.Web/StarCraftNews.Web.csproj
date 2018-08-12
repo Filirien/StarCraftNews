@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StarCraftNews.Data\StarCraftNews.Data.csproj" />
+    <ProjectReference Include="..\StarCraftNews.Services\StarCraftNews.Services.csproj" />
   </ItemGroup>
 
 </Project>
