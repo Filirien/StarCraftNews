@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace StarCraftNews.Common
+﻿namespace StarCraftNews.Common.Mapping
 {
-    public class Class1
+    public interface IMapFrom<TModel>
     {
     }
 }

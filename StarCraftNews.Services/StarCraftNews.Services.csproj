@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StarCraftNews.Common\StarCraftNews.Common.csproj" />
+    <ProjectReference Include="..\StarCraftNews.Data\StarCraftNews.Data.csproj" />
+  </ItemGroup>
+
 </Project>

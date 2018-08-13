@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace StarCraftNews.Web.Infrastructure.Extensions
+﻿namespace StarCraftNews.Web.Infrastructure.Extensions
 {
-    public class TempDataDictionaryExtensions
+    using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
+    public static class TempDataDictionaryExtensions
     {
+        public static void AddSuccessMessage(this ITempDataDictionary tempData, string message)
+        {
+            tempData[WebConstants.TempDataSuccessMessageKey] = message;
+        }
     }
 }
