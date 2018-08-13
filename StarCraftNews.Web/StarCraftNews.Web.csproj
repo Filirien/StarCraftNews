@@ -13,13 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StarCraftNews.Common\StarCraftNews.Common.csproj" />
     <ProjectReference Include="..\StarCraftNews.Data\StarCraftNews.Data.csproj" />
     <ProjectReference Include="..\StarCraftNews.Services\StarCraftNews.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\News\Controllers\" />
+    <Folder Include="Areas\News\Data\" />
+    <Folder Include="Areas\News\Models\" />
+    <Folder Include="Areas\News\Views\" />
   </ItemGroup>
 
 </Project>

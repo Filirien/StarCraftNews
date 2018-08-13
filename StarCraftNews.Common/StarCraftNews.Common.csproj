@@ -9,4 +9,8 @@
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StarCraftNews.Data\StarCraftNews.Data.csproj" />
+  </ItemGroup>
+
 </Project>
