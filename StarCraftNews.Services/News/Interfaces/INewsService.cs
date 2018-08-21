@@ -8,9 +8,11 @@
     {
         Task<IEnumerable<NewsListingBindingViewModel>> AllAsync(int page = 1);
 
-        Task CreateAsync(string userId, string title, string imageurl);
+        Task CreateAsync(string userId, string title, string imageUrl);
 
         Task<NewsWithCommentsBindingModel> WithCommentsById(int id);
+
+        Task Edit(int id, string title, string imageUrl);
 
         Task<bool> Delete(int id);
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace StarCraftNews.Data.Models
+﻿namespace StarCraftNews.Data.Models
 {
     public class NewsVote
     {
