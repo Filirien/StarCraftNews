@@ -76,11 +76,12 @@
             return await this.db.News.Where(n => n.Id == id).ProjectTo<NewsMinifieldBindingModel>().FirstOrDefaultAsync();
         }
 
-        public async Task CreateAsync(string userId, string title, string imageUrl)
+        public async Task CreateAsync(string userId, string title, string description, string imageUrl)
         {
             News news = new News
             {
                 Title = title,
+                Description = description,
                 ImageUrl = imageUrl,
                 AuthorId = userId,
                 CreatedOn = DateTime.Now
@@ -90,13 +91,14 @@
             await this.db.SaveChangesAsync();
         }
 
-        public async Task Edit(int id, string title, string imageUrl)
+        public async Task Edit(int id, string title, string description, string imageUrl)
         {
             var news = this.db.News.Find(id);
 
             if (news != null)
             {
                 news.Title = title;
+                news.Description = description;
                 news.ImageUrl = imageUrl;
 
                 await this.db.SaveChangesAsync();

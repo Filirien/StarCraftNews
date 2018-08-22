@@ -5,11 +5,16 @@
 <div class="row">
     <div class="box">
         <h2>@ViewData["Title"]</h2>
-        <form method="post">
+        <form method="post" asp-controller="News" asp-action="Edit" asp-route-id="@Model.Id">
             <div class="form-group">
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageUrl"></label>

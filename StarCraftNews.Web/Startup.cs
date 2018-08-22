@@ -34,7 +34,8 @@
             });
 
             services.AddDbContext<StarCraftNewsDbContext>(options =>
-               options.UseSqlServer(
+               
+            options.UseSqlServer(
                    Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<User, IdentityRole>(options =>
@@ -78,10 +79,10 @@
             else
             {
                 app.UseExceptionHandler("/home/error");
-                //app.UseHsts();
+                app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseCookiePolicy();
@@ -91,8 +92,8 @@
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                     name: "areas",
+                     template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 routes.MapRoute(
                     name: "default",

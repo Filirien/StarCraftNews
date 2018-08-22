@@ -40,7 +40,7 @@
         {
             var userId = this.userManager.GetUserId(User);
 
-            await this.news.CreateAsync(userId, model.Title, model.ImageUrl);
+            await this.news.CreateAsync(userId, model.Title, model.Description, model.ImageUrl);
 
             TempData.AddSuccessMessage($"News created successfully!");
 
@@ -84,7 +84,7 @@
                 return BadRequest();
             }
 
-            await this.news.Edit(id, model.Title, model.ImageUrl);
+            await this.news.Edit(id, model.Title, model.Description, model.ImageUrl);
 
             return RedirectToAction(nameof(All));
         }
