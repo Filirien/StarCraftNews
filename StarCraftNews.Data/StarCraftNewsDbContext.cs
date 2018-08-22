@@ -4,10 +4,10 @@ using StarCraftNews.Data.Models;
 
 namespace StarCraftNews.Data
 {
-    public class StarCraftNewsDbContext:IdentityDbContext<User>
+    public class StarCraftNewsDbContext : IdentityDbContext<User>
     {
         public StarCraftNewsDbContext(DbContextOptions<StarCraftNewsDbContext> options)
-            :base(options)
+            : base(options)
         {
         }
 
@@ -62,7 +62,7 @@ namespace StarCraftNews.Data
                 .WithMany(u => u.CommentVotes)
                 .HasForeignKey(cv => cv.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
-        
+
             base.OnModelCreating(builder);
         }
     }

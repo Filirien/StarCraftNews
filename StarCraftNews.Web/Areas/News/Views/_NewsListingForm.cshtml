@@ -1,0 +1,21 @@
+﻿@model IEnumerable<NewsListingBindingViewModel>
+
+@foreach (var news in Model)
+{
+<div class="row box box-center">
+    <a href="/news/details/@news.Id" class="text-info">
+        <h3>@news.Title</h3>
+        <img src="@news.ImageUrl" class="img-responsive" alt="No Image" />
+    </a>
+    <p>Created on: @news.CreatedOn</p>
+    <div class="comment-icon">
+        @news.Votes
+        <i class="fa fa-thumbs-up"></i>
+    </div>
+    <div class="comment-icon">
+        @news.Comments
+        <i class="fa fa-comment"></i>
+    </div>
+
+</div>
+}

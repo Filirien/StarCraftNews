@@ -92,12 +92,12 @@
 
         public async Task Edit(int id, string title, string imageUrl)
         {
-            var meme = this.db.News.Find(id);
+            var news = this.db.News.Find(id);
 
-            if (meme != null)
+            if (news != null)
             {
-                meme.Title = title;
-                meme.ImageUrl = imageUrl;
+                news.Title = title;
+                news.ImageUrl = imageUrl;
 
                 await this.db.SaveChangesAsync();
             }

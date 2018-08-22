@@ -19,7 +19,7 @@
         [Required]
         public string ImageUrl { get; set; }
 
-        public DateTime CreateOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public int Votes { get; set; }
 
