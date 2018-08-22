@@ -49,13 +49,13 @@
 
             services.AddAutoMapper();
 
-            services.AddTransient<IEmailSender, EmailSender>();
+            //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddDomainServices();
 
             services.AddRouting(routing => routing.LowercaseUrls = true);
 
-            //services.AddDefaultIdentity<IdentityUser>()
+            //services.AddDefaultIdentity<User>()
             //   .AddEntityFrameworkStores<StarCraftNewsDbContext>();
 
             services.AddMvc(options =>
