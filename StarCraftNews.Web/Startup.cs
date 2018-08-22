@@ -49,7 +49,7 @@
 
             services.AddAutoMapper();
 
-            //services.AddTransient<IEmailSender, EmailSender>();
+            services.AddSingleton<IEmailSender, EmailSender>();
 
             services.AddDomainServices();
 
