@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Comment\Data\" />
+    <Folder Include="Areas\Comment\Models\" />
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Areas\News\Data\" />
     <Folder Include="Areas\News\Models\" />

@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Web", "StarCraftNews.Web\StarCraftNews.Web.csproj", "{055ED51F-23CC-4D0F-92DD-6E37A0D46E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarCraftNews.Data", "StarCraftNews.Data\StarCraftNews.Data.csproj", "{E36E4D90-079B-4E81-A176-967E4A166506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Data", "StarCraftNews.Data\StarCraftNews.Data.csproj", "{E36E4D90-079B-4E81-A176-967E4A166506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarCraftNews.Services", "StarCraftNews.Services\StarCraftNews.Services.csproj", "{4CDD58D6-1AD3-4C07-94DB-8B9D71C75A56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Services", "StarCraftNews.Services\StarCraftNews.Services.csproj", "{4CDD58D6-1AD3-4C07-94DB-8B9D71C75A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarCraftNews.Common", "StarCraftNews.Common\StarCraftNews.Common.csproj", "{435F98AE-CEE6-43C4-8F4F-DA172E1CEB34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Common", "StarCraftNews.Common\StarCraftNews.Common.csproj", "{435F98AE-CEE6-43C4-8F4F-DA172E1CEB34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarCraftNews.Tests", "StarCraft.Tests\StarCraftNews.Tests.csproj", "{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{435F98AE-CEE6-43C4-8F4F-DA172E1CEB34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{435F98AE-CEE6-43C4-8F4F-DA172E1CEB34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{435F98AE-CEE6-43C4-8F4F-DA172E1CEB34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

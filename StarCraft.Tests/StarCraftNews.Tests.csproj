@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="2.1.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="Moq" Version="4.9.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StarCraftNews.Common\StarCraftNews.Common.csproj" />
+    <ProjectReference Include="..\StarCraftNews.Data\StarCraftNews.Data.csproj" />
+    <ProjectReference Include="..\StarCraftNews.Services\StarCraftNews.Services.csproj" />
+    <ProjectReference Include="..\StarCraftNews.Web\StarCraftNews.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Web\Controllers\" />
+  </ItemGroup>
+
+</Project>
