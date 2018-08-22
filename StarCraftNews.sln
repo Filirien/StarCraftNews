@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Services", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Common", "StarCraftNews.Common\StarCraftNews.Common.csproj", "{435F98AE-CEE6-43C4-8F4F-DA172E1CEB34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarCraftNews.Tests", "StarCraft.Tests\StarCraftNews.Tests.csproj", "{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StarCraftNews.Tests", "StarCraft.Tests\StarCraftNews.Tests.csproj", "{B8B7E091-73FD-48DB-B06E-F3AF33ECCEE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

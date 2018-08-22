@@ -14,7 +14,7 @@ namespace StarCraftNews.Web.Infrastructure.Mapping
             var allTypes = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
-                .Where(a => a.GetName().Name.Contains("StarCraftNews"))
+                .Where(a => a.GetName().Name.Contains("StarCraftNews") && !a.GetName().Name.Contains("Web"))
                 .SelectMany(a => a.GetTypes());
 
             allTypes

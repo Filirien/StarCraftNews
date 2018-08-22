@@ -50,7 +50,7 @@
 
             services.AddAutoMapper();
 
-            services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddDomainServices();
 

@@ -20,6 +20,8 @@
 
         private readonly int NewsPageSize = 2;
 
+        private const int NewsIdForDeleting = 1;
+
         private const int NewsIdForEditing = 3;
         private const string NewsTitle = "Edited";
         private const string NewsDescription = "Description";
@@ -56,7 +58,7 @@
         [Fact]
         public async Task NewsServiceAllAsyncShould_ReturnsNewsForPageOneByDefault()
         {
-            // Arrange
+            //Arrange
 
             var context = this.GetDbContext();
 
@@ -79,6 +81,50 @@
                 Assert.NotNull(testModel);
                 Assert.True(CompareNewsWithNewsListingServiceModelExact(returnedModel, testModel));
             }
+        }
+
+        [Fact]
+        public async Task NewsServiceEditShould_EditEntity()
+        {
+            // Arrange
+
+            var context = this.GetDbContext();
+
+            this.PopulateData(context);
+
+            var newsService = new NewsService(context);
+
+            // Act
+
+            await newsService.Edit(NewsIdForEditing, NewsTitle, NewsDescription, NewsImageUrl);
+
+            // Assert
+            var actualNews = context.News.Find(NewsIdForEditing);
+
+            Assert.NotNull(actualNews);
+            Assert.Equal(NewsTitle, actualNews.Title);
+            Assert.Equal(NewsDescription, actualNews.Description);
+            Assert.Equal(NewsImageUrl, actualNews.ImageUrl);
+        }
+
+        [Fact]
+        public async Task NewsServiceDeleteShould_DeleteEntry()
+        {
+            // Arrange
+
+            var context = this.GetDbContext();
+
+            this.PopulateData(context);
+
+            var newsService = new NewsService(context);
+
+            // Act
+
+            await newsService.Delete(NewsIdForDeleting);
+
+            // Assert
+            Assert.True(!context.News.Any(m => m.Id == NewsIdForDeleting));
+
         }
     }
 }
