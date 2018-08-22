@@ -12,6 +12,7 @@
 
     using static StarCraftNews.Web.WebConstants;
 
+    [Area("Comment")]
     [Authorize]
     public class CommentsController : Controller
     {

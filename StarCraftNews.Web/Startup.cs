@@ -12,7 +12,6 @@
     using StarCraftNews.Web.Infrastructure.Extensions;
     using StarCraftNews.Data.Models;
     using AutoMapper;
-    using StarCraftNews.Web.Services;
 
     public class Startup
     {
@@ -49,9 +48,7 @@
                .AddDefaultTokenProviders();
 
             services.AddAutoMapper();
-
-            services.AddTransient<IEmailSender, EmailSender>();
-
+            
             services.AddDomainServices();
 
             services.AddRouting(routing => routing.LowercaseUrls = true);

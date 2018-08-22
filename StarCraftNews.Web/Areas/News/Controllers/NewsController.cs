@@ -10,7 +10,8 @@
     using StarCraftNews.Services.News.Interfaces;
     using StarCraftNews.Web.Infrastructure.Extensions;
     using StarCraftNews.Web.Infrastructure.Filters;
-
+    
+    [Area("News")]
     [Authorize]
     public class NewsController : Controller
     {
