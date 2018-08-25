@@ -42,11 +42,11 @@ body {
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-body {
+/*body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
     background: url('../images/background-closet.jpg') no-repeat center center fixed;
     background-size: cover;
-}
+}*/
 
 h1,
 h2,
@@ -81,17 +81,17 @@ hr {
     display: none;
 }
 
-.navbar-brand {
+/*.navbar-brand {
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
-}
+}*/
 
-.navbar-nav {
+/*.navbar-nav {
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 3px;
-}
+}*/
 
 .img-full {
     min-width: 100%;
@@ -124,12 +124,12 @@ hr {
     background: rgba(255,255,255,0.9);
 }
 
-.intro-text {
+/*.intro-text {
     text-transform: uppercase;
     font-size: 1.25em;
     font-weight: 400;
     letter-spacing: 1px;
-}
+}*/
 
 .img-border {
     float: none;

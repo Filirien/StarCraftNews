@@ -12,6 +12,7 @@
     using StarCraftNews.Web.Infrastructure.Extensions;
     using StarCraftNews.Data.Models;
     using AutoMapper;
+    using StarCraftNews.Web.Areas.Identity.Services;
 
     public class Startup
     {
@@ -47,9 +48,14 @@
                .AddEntityFrameworkStores<StarCraftNewsDbContext>()
                .AddDefaultTokenProviders();
 
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<SendGridOptions>(this.Configuration.GetSection("EmailSettings"));
+
             services.AddAutoMapper();
             
             services.AddDomainServices();
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/identity/account/login");
 
             services.AddRouting(routing => routing.LowercaseUrls = true);
 
@@ -83,6 +89,8 @@
             app.UseStaticFiles();
 
             app.UseCookiePolicy();
+
+
 
             app.UseAuthentication();
 

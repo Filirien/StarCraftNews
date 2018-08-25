@@ -33,10 +33,12 @@
         public async Task<IActionResult> AllAsync([FromQuery]int page = 1)
             => Json(await this.news.AllAsync(page));
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
             => View();
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         [ValidateModelState]
         public async Task<IActionResult> Create(NewsCreateViewModel model)
         {
