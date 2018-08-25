@@ -45,6 +45,7 @@
                 options.Password.RequireLowercase = false;
                 options.Password.RequireDigit = false;
             })
+                .AddDefaultUI()
                .AddEntityFrameworkStores<StarCraftNewsDbContext>()
                .AddDefaultTokenProviders();
 
@@ -87,11 +88,7 @@
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseCookiePolicy();
-
-
-
             app.UseAuthentication();
 
             app.UseMvc(routes =>
