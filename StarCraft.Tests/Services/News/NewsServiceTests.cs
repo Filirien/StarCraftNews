@@ -21,7 +21,7 @@
             mapper = new Mapper(configuration);
         }
 
-        private readonly int NewsPageSize = 2;
+        private readonly int NewsPageSize = 6;
 
         private const int NewsIdForDeleting = 1;
 

@@ -279,6 +279,11 @@ buttons fade in as a visual cue for the user */
     font-size: 30px;
 }
 
+.text {
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /*video css*/
 .Hero-videoWrap {

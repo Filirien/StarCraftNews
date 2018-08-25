@@ -21,7 +21,7 @@
 		drawingErase: "Erase",
 	};
 	
-	var MemeGenerator = function(element, options){
+	var NewsGenerator = function(element, options){
 		var MG = this;
 		
 		this.settings = $.extend(true, {}, {
@@ -1086,13 +1086,13 @@
 	};
 	
 	
-	$.fn.memeGenerator = function(methodOrOptions){
+	$.fn.newsGenerator = function(methodOrOptions){
 		
 		var method = (typeof methodOrOptions === 'string') ? methodOrOptions : undefined;
 
 		if(method)
 		{
-			var memeGeneratorPlugins = [];
+			var newsGeneratorPlugins = [];
 			var args = (arguments.length > 1) ? Array.prototype.slice.call(arguments, 1) : undefined;
 			var results = [];
 			
@@ -1104,26 +1104,26 @@
 
 			this.each(function(){
 				var $el          = $(this);
-				var memeGeneratorPlugin = $el.data('memeGenerator');
+				var newsGeneratorPlugin = $el.data('newsGenerator');
 
-				memeGeneratorPlugins.push(memeGeneratorPlugin);
+                newsGeneratorPlugin.push(newsGeneratorPlugin);
 			});
 			
 			this.each(function(index){
-				var memeGeneratorPlugin = memeGeneratorPlugins[index];
+                var newsGeneratorPlugin = newsGeneratorPlugin[index];
 
-				if(!memeGeneratorPlugin)
+                if (!newsGeneratorPlugin)
 				{
 					results.push(undefined);
 					return;
 				}
 
-				if(typeof memeGeneratorPlugin[method] === 'function')
+                if (typeof newsGeneratorPlugin[method] === 'function')
 				{
-					var result = memeGeneratorPlugin[method].apply(memeGeneratorPlugin, args);
+                    var result = newsGeneratorPlugin[method].apply(newsGeneratorPlugin, args);
 					results.push(result);
 				} else {
-					console.warn('$.fn.memeGenerator: Undefined method "' + method + '"');
+					console.warn('$.fn.newsGenerator: Undefined method "' + method + '"');
 				}
 			});
 
@@ -1133,10 +1133,10 @@
 
 			return this.each(function(){
 				var $el          = $(this);
-				var memeGeneratorPlugin = new MemeGenerator($el, options);
-				memeGeneratorPlugin.init();
+                var newsGeneratorPlugin = new NewsGenerator($el, options);
+                newsGeneratorPlugin.init();
 
-				$el.data('memeGenerator', memeGeneratorPlugin);
+                $el.data('newsGenerator', newsGeneratorPlugin);
 			});
 		}
 		

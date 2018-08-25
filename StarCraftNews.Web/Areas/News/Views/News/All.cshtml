@@ -35,20 +35,24 @@
                     success: function (json) {
                         for (var item of json) {
                             console.log(item);
-                            $('#news-container').append(`<div class="row box box-center">
-                                                            <a href="/news/news/details/${item.id}" class="text-info">
-                                                                <h3>${item.title}</h3>
-                                                                <p>${item.description}</p>
-                                                                <img src="${item.imageUrl}" class="img-responsive" alt="No Image" />
-                                                            </a>
-                                                            <p>Created on: ${item.createdOn}</p>
-                                                            <div class="comment-icon">
-                                                                ${item.votes}
-                                                                <i class="fa fa-thumbs-up"></i>
-                                                                ${item.comments}
-                                                                <i class="fa fa-comments-o"></i>
-                                                            </div>
-                                                        </div>`);
+                            
+                            $('#news-container').append(`<div>
+                                                             <h3>${item.title}</h3>
+                                                             <img src="${item.imageUrl}" height="365" width="761" alt="No Image" />
+                                                             <p>
+                                                                 ${item.description.}...
+                                                                     <a href="/news/news/details/${item.id}" class="btn btn-primary btn-xs"><strong>Read mоre</strong></a>
+                                                                 </p>
+                                                             <br/>
+                                                             <p class="text-center">Created on: ${item.createdOn}</p>
+
+                                                             <div class="comment-icon box-center">
+                                                                 ${item.votes}
+                                                                 <i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                 ${item.comments}
+                                                                 <i class="fa fa-comment"></i>
+                                                             </div>
+                                                         </div> <br/> <br/>`);
                         }
 
                         var nextPage = Number($("#next-page").val());

@@ -4,31 +4,37 @@
 
     @foreach (var news in Model)
     {
-        <div class="row box box-center">
+        <div>
 
-                <h3>@news.Title</h3>
-                <p>@news.Description</p>
-                <img src="@news.ImageUrl" class="img-responsive" height="730" width="365" alt="No Image" />
-                <a href="/news/news/details/@news.Id" class="btn btn-primary">Read mоre...</a>
-                <p>Created on: @news.CreatedOn</p>
-                <div class="comment-icon">
-                    @news.Votes
-                    <i class="fa fa-thumbs-up"></i>
-                    @news.Comments                                        
-                    <i class="fa fa-comment"></i>
-                </div>
+            <h3>@news.Title</h3>
+            <img src="@news.ImageUrl" height="365" width="761" alt="No Image" />
+            <p>
+                @news.Description.Substring(0, 200)...
+                <a href="/news/news/details/@news.Id" class="btn btn-primary btn-xs"><strong>Read mоre</strong></a>
+            </p>
+            <br />
+            <p class="text-center">Created on: @news.CreatedOn</p>
+
+            <div class="comment-icon box-center">
+                @news.Votes
+                <i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @news.Comments
+                <i class="fa fa-comment"></i>
             </div>
+        </div>
+        <br /> 
+        <br />
 
         @*<div class="col-lg-12">
-            <div class="card h-100">
-                <h4 class="card-header">@news.Title</h4>
-                <div class="card-body" style="background-image: url(@news.ImageUrl); height: 765; width: 365;">
-                    <p class="card-text">@news.Description</p>
+                <div class="card h-100">
+                    <h4 class="card-header">@news.Title</h4>
+                    <div class="card-body" style="background-image: url(@news.ImageUrl); height: 765; width: 365;">
+                        <p class="card-text">@news.Description</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/news/news/details/@news.Id" class="btn btn-primary">Learn More</a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="/news/news/details/@news.Id" class="btn btn-primary">Learn More</a>
-                </div>
-            </div>
-        </div>*@
+            </div>*@
     }
 </div>

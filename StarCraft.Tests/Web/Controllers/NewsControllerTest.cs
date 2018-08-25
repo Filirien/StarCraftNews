@@ -39,7 +39,7 @@
         }
 
         [Fact]
-        public void MemesControllerShould_BeOnlyForRegisteredUsers()
+        public void NewsControllerShould_BeOnlyForRegisteredUsers()
         {
             // Arrange
             var controller = typeof(NewsController);
@@ -54,69 +54,74 @@
             Assert.NotNull(areaAttribute);
         }
 
-        //[Fact]
-        //public async Task PostCreateShouldReturnRedirectWithValidModel()
-        //{
-        //    // Arrange
-        //    string titleValue = "TestMeme";
-        //    string imageUrlValue = "test.com/dadsefaef";
-
-        //    string modelUserId = null;
-        //    string modelTitle = null;
-        //    string modelImageUrl = null;
-        //    string successMessage = null;
-
-        //    var userManager = this.GetUserManagerMock();
-
-        //    var newsService = new Mock<INewsService>();
-        //    newsService
-        //        .Setup(c => c.CreateAsync(
-        //            It.IsAny<string>(),
-        //            It.IsAny<string>(),
-        //            It.IsAny<string>(),
-        //            It.IsAny<string>()))
-        //        .Callback((string userId, string title, string imageUrl) =>
-        //        {
-        //            modelUserId = userId;
-        //            modelTitle = title;
-        //            modelImageUrl = imageUrl;
-        //        })
-        //        .Returns(Task.CompletedTask);
-
-        //    var tempData = new Mock<ITempDataDictionary>();
-
-        //    tempData
-        //        .SetupSet(t => t[TempDataSuccessMessageKey] = It.IsAny<string>())
-        //        .Callback((string key, object message) => successMessage = message as string);
-
-        //    var controller = new NewsController(newsService.Object, userManager.Object);
-        //    controller.TempData = tempData.Object;
-
-        //    // Act
-        //    var result = await controller.Create(new NewsCreateViewModel
-        //    {
-        //        Title = titleValue,
-        //        ImageUrl = imageUrlValue
-        //    });
-
-        //    // Assert
-
-        //    Assert.Equal(titleValue, modelTitle);
-        //    Assert.Equal(imageUrlValue, modelImageUrl);
-
-        //    Assert.Equal("Meme created successfully!", successMessage);
-
-        //    Assert.IsType<RedirectToActionResult>(result);
-
-        //    Assert.Equal("All", (result as RedirectToActionResult).ActionName);
-        //    Assert.Equal(null, (result as RedirectToActionResult).ControllerName);
-        //}
-
         [Fact]
-        public void MemesControllerAllShould_BeForRegisteredUsersAndGuests()
+        public async Task PostCreateShouldReturnRedirectWithValidModel()
         {
             // Arrange
-            var controller = typeof(NewsControllerTest);
+            string titleValue = "TestNews";
+            string descriptionValue = "DescriptionNews";
+            string imageUrlValue = "test.com/dadsefaef";
+
+            string modelUserId = null;
+            string modelTitle = null;
+            string modelDescription = null;
+            string modelImageUrl = null;
+            string successMessage = null;
+
+            var userManager = this.GetUserManagerMock();
+
+            var newsService = new Mock<INewsService>();
+            newsService
+                .Setup(c => c.CreateAsync(
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>(),
+                    It.IsAny<string>()))
+                .Callback((string userId, string title,string description, string imageUrl) =>
+                {
+                    modelUserId = userId;
+                    modelTitle = title;
+                    modelDescription = description;
+                    modelImageUrl = imageUrl;
+                })
+                .Returns(Task.CompletedTask);
+
+            var tempData = new Mock<ITempDataDictionary>();
+
+            tempData
+                .SetupSet(t => t[TempDataSuccessMessageKey] = It.IsAny<string>())
+                .Callback((string key, object message) => successMessage = message as string);
+
+            var controller = new NewsController(newsService.Object, userManager.Object);
+            controller.TempData = tempData.Object;
+
+            // Act
+            var result = await controller.Create(new NewsCreateViewModel
+            {
+                Title = titleValue,
+                Description = descriptionValue,
+                ImageUrl = imageUrlValue
+            });
+
+            // Assert
+
+            Assert.Equal(titleValue, modelTitle);
+            Assert.Equal(descriptionValue, modelDescription);
+            Assert.Equal(imageUrlValue, modelImageUrl);
+
+            Assert.Equal("News created successfully!", successMessage);
+
+            Assert.IsType<RedirectToActionResult>(result);
+
+            Assert.Equal("All", (result as RedirectToActionResult).ActionName);
+            Assert.Equal(null, (result as RedirectToActionResult).ControllerName);
+        }
+
+        [Fact]
+        public void NewsControllerAllShould_BeForRegisteredUsersAndGuests()
+        {
+            // Arrange
+            var controller = typeof(NewsController);
             var method = controller.GetMethods().Where(m => m.Name == "All").FirstOrDefault();
 
             // Act
