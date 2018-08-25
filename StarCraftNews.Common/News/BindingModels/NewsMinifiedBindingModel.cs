@@ -1,9 +1,6 @@
 ﻿namespace StarCraftNews.Common.News.BindingModels
 {
-    using StarCraftNews.Common.Mapping;
-    using StarCraftNews.Data.Models;
-
-    public class NewsMinifieldBindingModel : IMapFrom<News>
+    public class NewsMinifiedBindingModel
     {
         public int Id { get; set; }
 

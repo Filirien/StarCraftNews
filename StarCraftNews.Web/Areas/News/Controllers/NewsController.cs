@@ -28,6 +28,7 @@
         public async Task<IActionResult> All([FromQuery]int page = 1)
             => View(await this.news.AllAsync(page));
 
+        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> AllAsync([FromQuery]int page = 1)
             => Json(await this.news.AllAsync(page));
@@ -76,7 +77,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, NewsMinifieldBindingModel model)
+        public async Task<IActionResult> Edit(int id, NewsMinifiedBindingModel model)
         {
             var userId = this.userManager.GetUserId(User);
             var newsAuthorId = await this.news.AuthorId(id);
@@ -102,7 +103,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id, NewsMinifieldBindingModel model)
+        public async Task<IActionResult> Delete(int id, NewsMinifiedBindingModel model)
         {
             var userId = this.userManager.GetUserId(User);
             var newsAuthorId = await this.news.AuthorId(id);

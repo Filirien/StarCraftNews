@@ -1,13 +1,9 @@
 ﻿namespace StarCraftNews.Common.News.BindingModels
 {
-    using AutoMapper;
     using System;
     using System.ComponentModel.DataAnnotations;
-    using StarCraftNews.Data.Models;
-    using System.Linq;
-    using StarCraftNews.Common.Mapping;
 
-    public class NewsListingBindingViewModel: IMapFrom<News>, IHaveCustomMapping
+    public class NewsListingBindingViewModel
     {
         [Required]
         public int Id { get; set; }
@@ -16,7 +12,7 @@
         [StringLength(60)]
         public string Title { get; set; }
 
-        [StringLength(500)]
+        [StringLength(2000)]
         public string Description { get; set; }
 
         [Required]
@@ -27,11 +23,5 @@
         public int Votes { get; set; }
 
         public int Comments { get; set; }
-
-        public void ConfigureMapping(Profile mapper)
-                 => mapper
-                       .CreateMap<News, NewsListingBindingViewModel>()
-                       .ForMember(n => n.Comments, cfg => cfg.MapFrom(nn => nn.Comments.Count()))
-                       .ForMember(n => n.Votes, cfg => cfg.MapFrom(nn => nn.Votes.Sum(v => v.Value)));
     }
 }

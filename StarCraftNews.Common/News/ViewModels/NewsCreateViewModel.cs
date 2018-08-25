@@ -8,7 +8,7 @@
         [StringLength(60)]
         public string Title { get; set; }
 
-        [StringLength(500)]
+        [StringLength(2000)]
         public string Description { get; set; }
 
         [Required]

@@ -1,9 +1,6 @@
 ﻿namespace StarCraftNews.Services.Admin.Models
 {
-    using StarCraftNews.Common.Mapping;
-    using StarCraftNews.Data.Models;
-
-    public class AdminUserListingServiceModel : IMapFrom<User>
+    public class AdminUserListingServiceModel
     {
         public string Id { get; set; }
 

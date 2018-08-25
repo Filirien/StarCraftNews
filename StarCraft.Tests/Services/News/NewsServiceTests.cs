@@ -1,10 +1,12 @@
 ﻿namespace StarCraft.Tests.Services.News
 {
+    using AutoMapper;
     using Microsoft.EntityFrameworkCore;
     using StarCraftNews.Common.News.BindingModels;
     using StarCraftNews.Data;
     using StarCraftNews.Data.Models;
     using StarCraftNews.Services.News;
+    using StarCraftNews.Web.Infrastructure.Mapping;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -15,7 +17,8 @@
     {
         public NewsServiceTests()
         {
-            Tests.Initialize();
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile<AutoMapperProfile>());
+            mapper = new Mapper(configuration);
         }
 
         private readonly int NewsPageSize = 2;
@@ -26,6 +29,7 @@
         private const string NewsTitle = "Edited";
         private const string NewsDescription = "Description";
         private const string NewsImageUrl = "/images.jpg";
+        private IMapper mapper;
 
         private StarCraftNewsDbContext GetDbContext()
             => new StarCraftNewsDbContext(
@@ -64,7 +68,7 @@
 
             this.PopulateData(context);
 
-            var newsService = new NewsService(context);
+            var newsService = new NewsService(context, mapper);
 
             // Act
 
@@ -92,7 +96,7 @@
 
             this.PopulateData(context);
 
-            var newsService = new NewsService(context);
+            var newsService = new NewsService(context, mapper);
 
             // Act
 
@@ -116,7 +120,7 @@
 
             this.PopulateData(context);
 
-            var newsService = new NewsService(context);
+            var newsService = new NewsService(context, mapper);
 
             // Act
 

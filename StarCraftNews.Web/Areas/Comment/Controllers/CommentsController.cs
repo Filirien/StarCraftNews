@@ -56,7 +56,7 @@
 
             TempData.AddSuccessMessage($"Comment created successfully!");
 
-            return RedirectToAction("Details", "News", new { id = model.NewsId });
+            return RedirectToAction("Details", "News", new { id = model.NewsId, area = "News" });
         }
 
         public async Task<IActionResult> Delete(int id)

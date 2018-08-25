@@ -22,7 +22,7 @@
 
         Task<IEnumerable<NewsTopThreeBindingModel>> TopThree();
 
-        Task<NewsMinifieldBindingModel> ById(int id);
+        Task<NewsMinifiedBindingModel> ById(int id);
 
         Task<string> AuthorId(int id);
     }

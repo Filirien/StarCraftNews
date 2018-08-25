@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NewsListingBindingViewModel>
+
+<div class="row">
+
+    @foreach (var news in Model)
+    {
+        <div class="row box box-center">
+
+                <h3>@news.Title</h3>
+                <p>@news.Description</p>
+                <img src="@news.ImageUrl" class="img-responsive" height="730" width="365" alt="No Image" />
+                <a href="/news/news/details/@news.Id" class="btn btn-primary">Read mоre...</a>
+                <p>Created on: @news.CreatedOn</p>
+                <div class="comment-icon">
+                    @news.Votes
+                    <i class="fa fa-thumbs-up"></i>
+                </div>
+                <div class="comment-icon">
+                    @news.Comments
+                    <i class="fa fa-comment"></i>
+                </div>
+            </div>
+
+        @*<div class="col-lg-12">
+            <div class="card h-100">
+                <h4 class="card-header">@news.Title</h4>
+                <div class="card-body" style="background-image: url(@news.ImageUrl); height: 765; width: 365;">
+                    <p class="card-text">@news.Description</p>
+                </div>
+                <div class="card-footer">
+                    <a href="/news/news/details/@news.Id" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>*@
+    }
+</div>

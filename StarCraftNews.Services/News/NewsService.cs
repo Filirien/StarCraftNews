@@ -1,5 +1,6 @@
 ﻿namespace StarCraftNews.Services.News
 {
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Microsoft.EntityFrameworkCore;
     using StarCraftNews.Common.News.BindingModels;
@@ -14,11 +15,13 @@
     public class NewsService : INewsService
     {
         private readonly StarCraftNewsDbContext db;
-        private readonly int NewsPageSize = 2;
+        private readonly IMapper mapper;
+        private readonly int NewsPageSize = 6;
 
-        public NewsService(StarCraftNewsDbContext db)
+        public NewsService(StarCraftNewsDbContext db, IMapper mapper)
         {
             this.db = db;
+            this.mapper = mapper;
         }
         public async Task<int> AddOrUpdateVote(int newsId, string userId, int value)
         {
@@ -62,7 +65,7 @@
                  .OrderByDescending(n => n.CreatedOn)
                  .Skip((page - 1) * NewsPageSize)
                  .Take(NewsPageSize)
-                 .ProjectTo<NewsListingBindingViewModel>()
+                 .ProjectTo<NewsListingBindingViewModel>(mapper.ConfigurationProvider)
                  .ToListAsync();
         }
 
@@ -71,9 +74,9 @@
             return await this.db.News.Where(n => n.Id == id).Select(n => n.AuthorId).FirstOrDefaultAsync();
         }
 
-        public async Task<NewsMinifieldBindingModel> ById(int id)
+        public async Task<NewsMinifiedBindingModel> ById(int id)
         {
-            return await this.db.News.Where(n => n.Id == id).ProjectTo<NewsMinifieldBindingModel>().FirstOrDefaultAsync();
+            return await this.db.News.Where(n => n.Id == id).ProjectTo<NewsMinifiedBindingModel>(mapper.ConfigurationProvider).FirstOrDefaultAsync();
         }
 
         public async Task CreateAsync(string userId, string title, string description, string imageUrl)
@@ -133,7 +136,7 @@
                 .News
                 .OrderByDescending(m => m.Votes.Select(v => v.Value).Sum())
                 .Take(3)
-                .ProjectTo<NewsTopThreeBindingModel>()
+                .ProjectTo<NewsTopThreeBindingModel>(mapper.ConfigurationProvider)
                 .ToListAsync();
         }
 
@@ -152,7 +155,7 @@
            return this.db
                 .News
                 .Where(m => m.Id == id)
-                .ProjectTo<NewsWithCommentsBindingModel>()
+                .ProjectTo<NewsWithCommentsBindingModel>(mapper.ConfigurationProvider)
                 .FirstOrDefaultAsync();
         }
 

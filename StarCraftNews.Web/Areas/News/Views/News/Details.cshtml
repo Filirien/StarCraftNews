@@ -16,8 +16,8 @@
         <div>
             @if (User.Identity.Name == Model.Author || User.IsInRole(WebConstants.AdministratorRole))
             {
-                <a href="/news/edit/@Model.Id" class="btn btn-warning">Edit</a>
-                <a href="/news/delete/@Model.Id" class="btn btn-danger">Delete</a>
+                <a href="/news/news/edit/@Model.Id" class="btn btn-warning">Edit</a>
+                <a href="/news/news/delete/@Model.Id" class="btn btn-danger">Delete</a>
             }
         </div>
     </div>
@@ -25,9 +25,9 @@
 <div class="row box box-center">
     <div class="comments-container">
         <h1>Comments</h1>
-        <a href="/comments/create?newsId=@Model.Id&parentCommentId=null" class="btn btn-success">Add Comment</a>
+        <a href="/comment/comments/create?newsId=@Model.Id&parentCommentId=null" class="btn btn-success">Add Comment</a>
         <ul id="comments-list" class="comments-list">
-            @*@foreach (var comment in Model.Comments)
+            @foreach (var comment in Model.Comments)
             {
                 <li>
                     <div class="comment-main-level">
@@ -35,10 +35,10 @@
                             <div class="comment-head">
                                 <h6 class="comment-name@(Model.Author==comment.Author?" by-author":"")"><a href="/users/profile/@comment.AuthorId">@comment.Author</a></h6>
                                 <span>@comment.CreatedOn</span>
-                                <a href="/comments/create?newsId=null&parentCommentId=@comment.Id"><i class="fa fa-reply"></i></a>
+                                <a href="/comment/comments/create?newsId=null&parentCommentId=@comment.Id"><i class="fa fa-reply"></i></a>
                                 @if (User.Identity.Name == Model.Author || User.IsInRole(WebConstants.AdministratorRole))
                                 {
-                                    <a href="/comments/delete/@comment.Id"><i class="fa fa-trash-o"></i></a>
+                                    <a href="/comment/comments/delete/@comment.Id"><i class="fa fa-trash-o"></i></a>
                                 }
                             </div>
                             <div class="comment-content">
@@ -57,7 +57,7 @@
                                         <span>@subcomment.CreatedOn</span>
                                         @if (User.Identity.Name == Model.Author || User.IsInRole(WebConstants.AdministratorRole))
                                         {
-                                            <a href="/comments/delete/@subcomment.Id"><i class="fa fa-trash-o"></i></a>
+                                            <a href="/comment/comments/delete/@subcomment.Id"><i class="fa fa-trash-o"></i></a>
                                         }
                                     </div>
                                     <div class="comment-content">
@@ -70,7 +70,7 @@
                     </ul>
                 </li>
 
-            }*@
+            }
         </ul>
     </div>
 </div>
@@ -82,7 +82,7 @@
 <script>
     $(document).ready(function () {
         $("#news-upvote").click(function (event) {
-            $.post("/News/AddOrUpdateVote",
+            $.post("/News/News/AddOrUpdateVote",
             {
                 NewsId: @Model.Id,
                 Value: 1
@@ -93,7 +93,7 @@
         });
 
         $("#news-downvote").click(function (event) {
-            $.post("/News/AddOrUpdateVote",
+            $.post("/News/News/AddOrUpdateVote",
             {
                 NewsId: @Model.Id,
                 Value: -1

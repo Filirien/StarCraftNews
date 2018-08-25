@@ -30,13 +30,13 @@
                 $('#loading').show();
 
                 $.ajax({
-                    url: '/news/allasync?page=' + $("#next-page").val(),
+                    url: '/news/news/allasync?page=' + $("#next-page").val(),
                     dataType: 'json',
                     success: function (json) {
                         for (var item of json) {
                             console.log(item);
                             $('#news-container').append(`<div class="row box box-center">
-                                                            <a href="/news/details/${item.id}" class="text-info">
+                                                            <a href="/news/news/details/${item.id}" class="text-info">
                                                                 <h3>${item.title}</h3>
                                                                 <p>${item.description}</p>
                                                                 <img src="${item.imageUrl}" class="img-responsive" alt="No Image" />
@@ -46,7 +46,7 @@
                                                                 ${item.votes}
                                                                 <i class="fa fa-thumbs-up"></i>
                                                             </div>
-                                                            <div class="comment-icon">
+                                                            <div class="comment-icon fa fa-comments-o">
                                                                 ${item.comments}
                                                                 <i class="fa fa-comment"></i>
                                                             </div>
