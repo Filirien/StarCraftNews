@@ -55,6 +55,73 @@
         }
 
         [Fact]
+        public void NewsControllerShould_GetCreateMethodBeOnlyForAdministrator()
+        {
+            // Arrange
+            var controller = typeof(NewsController);
+
+            // Act
+            var areaAttribute = controller
+                .GetMethods()
+                .Any(c => c.Name == "Create"
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(HttpGetAttribute))
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(AuthorizeAttribute) && ((AuthorizeAttribute)a).Roles.Split(',').Any(x => x == "Administrator")));
+
+            // Assert
+            Assert.True(areaAttribute);
+        }
+
+        [Fact]
+        public void NewsControllerShould_PostCreateMethodBeOnlyForAdministrator()
+        {
+            // Arrange
+            var controller = typeof(NewsController);
+
+            // Act
+            var areaAttribute = controller
+                .GetMethods()
+                .Any(c => c.Name == "Create"
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(HttpPostAttribute))
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(AuthorizeAttribute) && ((AuthorizeAttribute)a).Roles.Split(',').Any(x => x == "Administrator")));
+            
+            // Assert
+            Assert.True(areaAttribute);
+        }
+
+        [Fact]
+        public void NewsControllerShould_GetDeleteMethodBeOnlyForAdministrator()
+        {
+            // Arrange
+            var controller = typeof(NewsController);
+
+            // Act
+            var areaAttribute = controller
+                .GetMethods()
+                .Any(c => c.Name == "Delete"
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(HttpPostAttribute))
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(AuthorizeAttribute) && ((AuthorizeAttribute)a).Roles.Split(',').Any(x => x == "Administrator")));
+
+            // Assert
+            Assert.True(areaAttribute);
+        }
+
+        [Fact]
+        public void NewsControllerShould_PostDeleteMethodBeOnlyForAdministrator()
+        {
+            // Arrange
+            var controller = typeof(NewsController);
+
+            // Act
+            var areaAttribute = controller
+                .GetMethods()
+                .Any(c => c.Name == "Delete"
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(HttpPostAttribute))
+                            && c.GetCustomAttributes(true).Any(a => a.GetType() == typeof(AuthorizeAttribute) && ((AuthorizeAttribute)a).Roles.Split(',').Any(x => x == "Administrator")));
+
+            // Assert
+            Assert.True(areaAttribute);
+        }
+        [Fact]
         public async Task PostCreateShouldReturnRedirectWithValidModel()
         {
             // Arrange
@@ -134,5 +201,6 @@
             // Assert
             Assert.NotNull(allowGuestsAttribute);
         }
+
     }
 }

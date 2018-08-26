@@ -232,6 +232,13 @@ footer {
     }
 }
 
+.img-create {
+    background-image: url('../images/5a1415c7ae653a33b6013f37.jpg');
+    backface-visibility: visible;
+    height: 398px;
+    width: 760px;
+}
+
 .image-upload {
     display: none;
 }

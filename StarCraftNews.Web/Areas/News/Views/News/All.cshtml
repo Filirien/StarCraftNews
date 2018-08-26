@@ -39,10 +39,11 @@
                             $('#news-container').append(`<div>
                                                              <h3>${item.title}</h3>
                                                              <img src="${item.imageUrl}" height="365" width="761" alt="No Image" />
-                                                             <p>
-                                                                 ${item.description.}...
-                                                                     <a href="/news/news/details/${item.id}" class="btn btn-primary btn-xs"><strong>Read mоre</strong></a>
+                                                             <p class="text">
+                                                                 ${item.description}...
                                                                  </p>
+                                                                     <a href="/news/news/details/${item.id}" class="btn btn-primary btn-xs"><strong>Read mоre</strong></a>
+
                                                              <br/>
                                                              <p class="text-center">Created on: ${item.createdOn}</p>
 

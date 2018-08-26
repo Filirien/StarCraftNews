@@ -58,7 +58,7 @@
 
             return RedirectToAction("Details", "News", new { id = model.NewsId, area = "News" });
         }
-
+        
         public async Task<IActionResult> Delete(int id)
         {
             var userId = this.userManager.GetUserId(User);
@@ -77,7 +77,7 @@
 
             await this.comments.Delete(id);
 
-            return RedirectToAction("Details", "News", new { id = newsId });
+            return RedirectToAction("Details", "News", new { id = newsId, area = "News" });
         }
     }
 }

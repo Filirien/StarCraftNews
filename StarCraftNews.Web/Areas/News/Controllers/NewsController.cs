@@ -10,7 +10,7 @@
     using StarCraftNews.Services.News.Interfaces;
     using StarCraftNews.Web.Infrastructure.Extensions;
     using StarCraftNews.Web.Infrastructure.Filters;
-    
+
     [Area("News")]
     [Authorize]
     public class NewsController : Controller
@@ -33,6 +33,7 @@
         public async Task<IActionResult> AllAsync([FromQuery]int page = 1)
             => Json(await this.news.AllAsync(page));
 
+        [HttpGet]
         [Authorize(Roles = "Administrator")]
         public IActionResult Create()
             => View();
@@ -67,6 +68,8 @@
             return this.Ok(await this.news.AddOrUpdateVote(model.NewsId, userId, model.Value));
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id)
         {
             var userId = this.userManager.GetUserId(User);
@@ -79,6 +82,7 @@
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id, NewsMinifiedBindingModel model)
         {
             var userId = this.userManager.GetUserId(User);
@@ -93,6 +97,8 @@
             return RedirectToAction(nameof(All));
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int id)
         {
             var userId = this.userManager.GetUserId(User);
@@ -105,6 +111,7 @@
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int id, NewsMinifiedBindingModel model)
         {
             var userId = this.userManager.GetUserId(User);
