@@ -13,7 +13,7 @@
     using System.Threading.Tasks;
 
     [Area("Admin")]
-    [Authorize(Roles ="Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class UsersController : BaseAdminController
     {
         private readonly IAdminUserService users;
@@ -41,7 +41,7 @@
                     Value = r.Name
                 })
                 .ToListAsync();
-            
+
             return View(new AdminUserListingsViewModel
             {
                 Users = users,
@@ -66,15 +66,15 @@
                 return RedirectToAction(nameof(Index));
             }
 
-            await this.userManager.AddToRoleAsync(user, model.Role);
-            if (await userManager.IsInRoleAsync(user,"Administrator"))
+            var isAdministator = await this.userManager.AddToRoleAsync(user, model.Role);
+
+            if (isAdministator.Succeeded)
             {
                 TempData.AddSuccessMessage($"User {user.UserName} successfuly added to {model.Role} role.");
-
             }
             else
             {
-                TempData.AddSuccessMessage($"User {user.UserName} is already {model.Role} role.");
+                TempData.AddErrorMessage($"User {user.UserName} is already {model.Role} role.");
             }
             return RedirectToAction(nameof(Index));
         }

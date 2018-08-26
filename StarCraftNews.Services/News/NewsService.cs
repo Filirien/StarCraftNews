@@ -23,6 +23,7 @@
             this.db = db;
             this.mapper = mapper;
         }
+
         public async Task<int> AddOrUpdateVote(int newsId, string userId, int value)
         {
             if (!await this.DoesNewsExistAsync(newsId))

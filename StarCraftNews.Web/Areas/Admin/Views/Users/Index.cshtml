@@ -29,7 +29,7 @@
                             @user.Email
                         </th>
                         <th>
-                            <div style="text-align:center;">
+                            <div style="text-align:center;">                                 
                                 <form asp-controller="Users" asp-action="AddToRole" method="post">
                                     <input type="hidden" name="UserId" value="@user.Id" />
                                     <input type="hidden" name="Role" value="Administrator" />

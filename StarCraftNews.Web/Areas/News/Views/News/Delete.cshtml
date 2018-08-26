@@ -3,13 +3,15 @@
 @{
     ViewData["Title"] = "Delete Confirmation";
 }
-<div class="row">
-    <div class="box box-center">
+<div>
+    <div class="box">
         <form method="post">
             <h2>@ViewData["Title"]</h2>
             <h4>@Model.Title</h4>
             <p>@Model.Description</p>
             <img src="@Model.ImageUrl" class="img-responsive" alt="No Image" />
+            <br/>
+            <br/>
             <button type="submit" class="btn btn-danger">DELETE</button>
         </form>
     </div>
