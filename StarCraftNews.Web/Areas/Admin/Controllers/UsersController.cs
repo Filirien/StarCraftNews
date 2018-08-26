@@ -1,5 +1,6 @@
 ﻿namespace StarCraftNews.Web.Areas.Admin.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,8 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    [Area("Admin")]
+    [Authorize(Roles ="Administrator")]
     public class UsersController : BaseAdminController
     {
         private readonly IAdminUserService users;
@@ -26,8 +29,6 @@
             this.roleManager = roleManager;
             this.userManager = userManager;
         }
-
-
 
         public async Task<IActionResult> Index()
         {
@@ -66,7 +67,15 @@
             }
 
             await this.userManager.AddToRoleAsync(user, model.Role);
-            TempData.AddSuccessMessage($"User {user.UserName} successfuly added to {model.Role} role.");
+            if (await userManager.IsInRoleAsync(user,"Administrator"))
+            {
+                TempData.AddSuccessMessage($"User {user.UserName} successfuly added to {model.Role} role.");
+
+            }
+            else
+            {
+                TempData.AddSuccessMessage($"User {user.UserName} is already {model.Role} role.");
+            }
             return RedirectToAction(nameof(Index));
         }
     }

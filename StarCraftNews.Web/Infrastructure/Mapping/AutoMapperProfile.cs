@@ -29,6 +29,7 @@
             CreateMap<News, CommentDetailsBindingViewModel>()
                 .ForMember(cm => cm.Author, cfg => cfg.MapFrom(c => c.Author.UserName));
 
+            CreateMap<User, AdminUserListingServiceModel>();
             //var allTypes = AppDomain
             //    .CurrentDomain
             //    .GetAssemblies()

@@ -196,12 +196,21 @@ footer {
         display: none;
     }
 
+    .navbar-color {
+        border-radius: 0;
+        min-height: 0;
+        background: #0784ff;
+        color: red;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .navbar {
         min-height: 0;
     }
 
     .navbar-default {
-        border: none;
+        border: none;   
         background: #fff;
         background: rgba(255,255,255,0.9);
     }
@@ -215,6 +224,9 @@ footer {
         cursor: pointer;
     }
 
+    .navbar-admin:hover {
+        background-color: #d4d5d6;
+    }
     .navbar-nav {
         /*display: table;
         float: none;

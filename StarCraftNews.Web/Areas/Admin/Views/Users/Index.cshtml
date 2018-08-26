@@ -1,0 +1,49 @@
+﻿@model AdminUserListingsViewModel
+@{
+    ViewData["Title"] = "User Administration";
+}
+<div class="row">
+    <div class="box">
+        <h1>@ViewData["Title"]</h1>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Username
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <th>
+                            @user.Username
+                        </th>
+                        <th>
+                            @user.Email
+                        </th>
+                        <th>
+                            <div style="text-align:center;">
+                                <form asp-controller="Users" asp-action="AddToRole" method="post">
+                                    <input type="hidden" name="UserId" value="@user.Id" />
+                                    <input type="hidden" name="Role" value="Administrator" />
+                                    <input class="btn btn-sm btn-success" type="submit" value="Make Administrator" />
+                                </form>
+                            </div>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (TempData["SuccessMessage"]  != null )
+        {
+            <p> @TempData["SuccessMessage"] </p>
+        }
+    </div>
+</div>

@@ -4,24 +4,24 @@
 
     @foreach (var news in Model)
     {
-        <div>
+    <div >
 
-            <h3>@news.Title</h3>
-            <img src="@news.ImageUrl" height="365" width="761" alt="No Image" />
-            <p>
-                @news.Description.Substring(0, 200)...
-                <a href="/news/news/details/@news.Id" class="btn btn-primary btn-xs"><strong>Read mоre</strong></a>
-            </p>
-            <br />
-            <p class="text-center">Created on: @news.CreatedOn</p>
+        <h3>@news.Title</h3>
+        <img src="@news.ImageUrl" height="365" width="761" alt="No Image" />
+        <p class="text">
+            @news.Description
+        </p>
+        <a href="/news/news/details/@news.Id" class="btn btn-primary btn-xs"><strong>Read mоre</strong></a>
+        <br />
+        <p class="text-center">Created on: @news.CreatedOn</p>
 
-            <div class="comment-icon box-center">
-                @news.Votes
-                <i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                @news.Comments
-                <i class="fa fa-comment"></i>
-            </div>
+        <div class="comment-icon box-center">
+            @news.Votes
+            <i class="fa fa-thumbs-up"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @news.Comments
+            <i class="fa fa-comment"></i>
         </div>
+    </div>
         <br /> 
         <br />
 
